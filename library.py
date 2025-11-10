@@ -4,10 +4,10 @@ import plotly.express as px
 from datetime import datetime
 from db_config import get_connection
 
-# --- Sayfa Ayarları ---
+#  Sayfa Ayarları 
 st.set_page_config(page_title="Kütüphane Yönetim Sistemi", layout="wide")
 
-# --- CSS ---
+#  CSS 
 st.markdown("""
 <style>
 .stButton>button {
@@ -33,7 +33,7 @@ h2 {
 </style>
 """, unsafe_allow_html=True)
 
-# --- Dashboard ---
+#  Dashboard 
 def dashboard(conn):
     st.title(" Kütüphane Yönetim Paneli")
     cursor = conn.cursor()
@@ -75,7 +75,7 @@ def dashboard(conn):
     else:
         st.info(" Görüntülenecek ödünç kitap verisi bulunamadı.")
 
-# --- Üye Ekle ---
+#  Üye Ekle 
 def uye_ekle(conn):
     st.subheader(" Yeni Üye Ekle")
     ad = st.text_input("Ad")
@@ -91,7 +91,7 @@ def uye_ekle(conn):
         else:
             st.warning("Lütfen tüm alanları doldurun!")
 
-# --- Kitap Ekle ---
+#  Kitap Ekle 
 def kitap_ekle(conn):
     st.subheader(" Yeni Kitap Ekle")
     baslik = st.text_input("Kitap Başlığı")
@@ -107,7 +107,7 @@ def kitap_ekle(conn):
         else:
             st.warning("Lütfen tüm alanları doldurun!")
 
-# --- Kitap Ödünç Al ---
+#  Kitap Ödünç Al 
 def kitap_odunc_al(conn):
     st.subheader(" Kitap Ödünç Al")
     uye_id = st.number_input("Üye ID", min_value=1, step=1)
@@ -132,7 +132,7 @@ def kitap_odunc_al(conn):
         else:
             st.warning(" Stokta kitap kalmadı!")
 
-# --- Ana Uygulama ---
+#  Ana Uygulama 
 def main():
     conn = get_connection()
     if not conn:
